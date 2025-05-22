@@ -1,5 +1,6 @@
 package com.franchise.management.service;
 
+import com.franchise.management.model.Branch;
 import com.franchise.management.model.Franchise;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -10,4 +11,5 @@ public interface FranchiseService {
     Mono<Franchise> addBranchToFranchise(Long franchiseId, String branchName);
     Flux<Franchise> getAllFranchises();
     Mono<Franchise> getFranchiseById(Long id);
+    Flux<Branch> getBranchesByFranchiseId(Long franchiseId);
 }

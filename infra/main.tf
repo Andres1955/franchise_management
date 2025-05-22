@@ -1,7 +1,7 @@
 
-// script de Terraform que despliega una infraestructura en AWS
+# script de Terraform que despliega una infraestructura en AWS
 
-//Configuración Inicial de Terraform
+# Configuración Inicial de Terraform
 
 
 terraform {
@@ -18,7 +18,7 @@ provider "aws" {
 }
 
 
-// Base de Datos PostgreSQL (RDS)
+# Base de Datos PostgreSQL (RDS)
 
 resource "aws_db_instance" "franchise_db" {
   identifier           = "franchise-db"
@@ -33,7 +33,7 @@ resource "aws_db_instance" "franchise_db" {
 }
 
 
-//  Repositorio de Imágenes Docker (ECR)
+#  Repositorio de Imágenes Docker (ECR)
 
 resource "aws_ecr_repository" "franchise_app" {
   name = "franchise-management-app"
@@ -44,7 +44,7 @@ resource "aws_ecs_cluster" "franchise_cluster" {
 }
 
 
-// Definición de Tarea ECS (Task Definition)
+# Definición de Tarea ECS (Task Definition)
 
 resource "aws_ecs_task_definition" "franchise_task" {
   family                   = "franchise-task"
@@ -80,7 +80,7 @@ resource "aws_ecs_task_definition" "franchise_task" {
 
 
 
-// Servicio ECS (Despliegue Continuo)
+# Servicio ECS (Despliegue Continuo)
 
 resource "aws_ecs_service" "franchise_service" {
   name            = "franchise-service"

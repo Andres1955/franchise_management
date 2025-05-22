@@ -1,8 +1,8 @@
 
 
-// docker-compose.yml
-// Estructura General
-// aplicación Spring Boot (con WebFlux y R2DBC para PostgreSQL) y una base de datos PostgreSQL
+# docker-compose.yml
+# Estructura General
+# aplicación Spring Boot (con WebFlux y R2DBC para PostgreSQL) y una base de datos PostgreSQL
 
 
 

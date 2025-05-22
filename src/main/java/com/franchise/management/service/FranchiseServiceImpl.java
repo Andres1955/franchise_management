@@ -13,6 +13,11 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class FranchiseServiceImpl implements FranchiseService {
 
+    @Override
+    public Flux<Branch> getBranchesByFranchiseId(Long franchiseId) {
+        return branchRepository.findByFranchiseId(franchiseId);
+    }
+
     private final FranchiseRepository franchiseRepository;
     private final BranchRepository branchRepository;
 
@@ -33,12 +38,13 @@ public class FranchiseServiceImpl implements FranchiseService {
     @Override
     public Mono<Franchise> addBranchToFranchise(Long franchiseId, String branchName) {
         return franchiseRepository.findById(franchiseId)
+                .switchIfEmpty(Mono.error(new RuntimeException("Franquicia no encontrada")))
                 .flatMap(franchise -> {
-                    Branch branch = Branch.builder()
+                    Branch newBranch = Branch.builder()
                             .name(branchName)
                             .franchiseId(franchiseId)
                             .build();
-                    return branchRepository.save(branch)
+                    return branchRepository.save(newBranch)
                             .thenReturn(franchise);
                 });
     }
